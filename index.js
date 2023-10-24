@@ -13,6 +13,7 @@ mongoose.connect(dbConfig.MONGO_URL)
 
 const app = express();
 const usersRoute = require("./routes/user")
+const wishsRoute = require("./routes/wish")
 const bodyParser = require("body-parser");
 
 // Middlewares
@@ -30,6 +31,7 @@ app.get("/", (req, res, next) => {
 })
 
 app.use("/api/users", usersRoute);
+app.use("/api/wishes", wishsRoute);
 
 // Catch error and handle
 app.use((req, res, next) => {
