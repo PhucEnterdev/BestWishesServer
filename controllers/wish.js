@@ -106,10 +106,6 @@ const deleteWish = async (req, res, next) => {
 
 const getAllWishes = async (req, res, next) => {
     var {page, limit} = req.query;
-    if(!page || !limit){
-        page = 1;
-        limit = 10;
-    }
     const wishes = await Wish.find({}).sort({updatedAt: -1}).skip((page - 1) * limit).limit(limit)
     .populate("owner", "-createdAt -updatedAt -__v");
     return res.status(200).json(wishes);
