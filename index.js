@@ -15,6 +15,7 @@ const app = express();
 const usersRoute = require("./routes/user")
 const wishsRoute = require("./routes/wish")
 const bodyParser = require("body-parser");
+const User = require("./models/User");
 
 // Middlewares
 app.use(logger("dev"));
@@ -24,9 +25,9 @@ app.use(express.static('public'));
 app.use(express.json());
 
 
-app.get("/", (req, res, next) => {
+app.get("/", async (req, res, next) => {
     return res.status(200).json({
-        message: "Server is ok"
+        message: "Server is ok",
     })
 })
 

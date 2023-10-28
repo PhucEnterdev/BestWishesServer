@@ -21,7 +21,17 @@ const register = async (req, res, next) => {
             })
         }
 
-        const newUser = new User({username});
+        var avatars = new Array("https://res.cloudinary.com/doxvucamk/image/upload/v1698458448/bestwishes/dzwfz22ix2fa80zkuini.png",
+                                "https://res.cloudinary.com/doxvucamk/image/upload/v1698458407/bestwishes/lvusqhxdmxc2iw7bomak.png",
+                                "https://res.cloudinary.com/doxvucamk/image/upload/v1698458378/bestwishes/zziompblkncbykt8o7sy.png",
+                                "https://res.cloudinary.com/doxvucamk/image/upload/v1698458364/bestwishes/rgdsmmnnkzaqapf4rxtv.png",
+                                "https://res.cloudinary.com/doxvucamk/image/upload/v1698458328/bestwishes/ogrnws8fhx1g59yaph2d.png",
+                                "https://res.cloudinary.com/doxvucamk/image/upload/v1698458308/bestwishes/iy5eglxjqrhlyumgfmy2.png",
+                                "https://res.cloudinary.com/doxvucamk/image/upload/v1698458292/bestwishes/j5vpbfljhmjrrltyf7uh.png",
+                                "https://res.cloudinary.com/doxvucamk/image/upload/v1698458254/bestwishes/wdm92g2i97ohingpoiph.png");
+        
+        const index = Math.floor(Math.random() * 7);
+        const newUser = new User({username, avatar: avatars[index]});
         await newUser.save();
         return res.status(200).json({
             success: true,
